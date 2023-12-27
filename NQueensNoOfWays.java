@@ -1,9 +1,12 @@
 import java.util.*;
-public class NQueensInNRows {
+public class NQueensNoOfWays {
+
+    //static variable - because in recursion for each function call , a new parameter is passed , we donot want that , instead we want to use a single variable to store the number of ways
+    static int count;
 
     public static void nQueensInNRows(char arr[][], int row){
         if(row == arr.length){
-            printBoard(arr);
+            count++;
             return;
         }
         //column loop
@@ -40,17 +43,9 @@ public class NQueensInNRows {
         }
         return true;
     }
-    public static void printBoard(char arr[][]){
-        System.out.println("-------Chess board--------");
-        for(int i=0;i<arr.length;i++){
-            for(int j=0;j<arr[0].length;j++){
-                System.out.print(arr[i][j]+" ");
-            }
-            System.out.println();
-        }
-    }
+  
     public static void main(String args[]){
-        char arr[][] = new char[5][5];
+        char arr[][] = new char[4][4];
         for(int i=0;i<arr.length;i++){
             for(int j=0;j<arr[0].length;j++){
                 arr[i][j] = '.';
@@ -58,6 +53,7 @@ public class NQueensInNRows {
             
         }
         nQueensInNRows(arr, 0);
+        System.out.println("Total ways to solve N queens is "+count);
 
     }
 }
